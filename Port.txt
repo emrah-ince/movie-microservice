@@ -1,0 +1,6 @@
+Services
+	-movieApi => 5011
+	-userCommentApi => 5012
+	-mailApi => 5013
+Identityserver => 5001
+Gateway => 5000

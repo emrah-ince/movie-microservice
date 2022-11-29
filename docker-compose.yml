@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  moviedb:
+    image: mongo
+  commentdb:
+    image: redis
+  identitydb:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+  movie.api:
+    image: movie_api_image
+    build:
+      context: .
+      dockerfile: Services/Movie/TMDB.Services.Movie/Dockerfile
+  identityserver.api:
+    image: identityserver_api_image
+    build:
+      context: .
+      dockerfile: IdentityServer/TMDB.IdentityServer/Dockerfile
+  comment.api:
+    image: comment_api_image
+    build:
+      context: .
+      dockerfile: Services/UserComment/TMDB.Services.UserComment/Dockerfile
+  email.api:
+    image: email_api_image
+    build:
+      context: .
+      dockerfile: Services/Mail/TMDB.Services.Mail/Dockerfile
+  gateway.api:
+    image: gateway_api_image
+    build:
+      context: .
+      dockerfile: TMDB.Gateway/Dockerfile
+volumes:
+  moviedb_volume:
+  identitydb_volume:
